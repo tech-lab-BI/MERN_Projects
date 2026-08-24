@@ -1,7 +1,6 @@
-import { useState } from "react";
 import { addTask } from "../service/backendOps";
 
-function TaskInput() {
+function TaskInput({ data, setData }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -9,7 +8,10 @@ function TaskInput() {
     const task = formData.get("task");
     const date = formData.get("date");
 
-    addTask({ task, date });
+    addTask({ task, date }).then(({ newTask }) => {
+      setData([newTask, ...data]);
+      event.target.reset();
+    });
   };
   return (
     <>
