@@ -56,7 +56,9 @@ function TaskBodyList({ data, setData }) {
                 {item.task}
               </span>
               <span className="col-4 col-sm-3 text-end small text-secondary text-break">
-                {item.date || "No deadline"}
+                {item.date
+                  ? new Date(item.date).toISOString().split("T")[0]
+                  : "No deadline"}
               </span>
               <span className="col-2 col-sm-1 text-end">
                 <button
