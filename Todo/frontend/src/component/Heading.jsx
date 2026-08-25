@@ -15,11 +15,27 @@ function TaskInput({ data, setData }) {
   };
   return (
     <>
-      <h1>Todo List</h1>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="task" required />
-        <input type="date" name="date" />
-        <button type="submit">Submit</button>
+      <form className="row g-2 align-items-center mb-4" onSubmit={handleSubmit}>
+        <div className="col-12 col-md">
+          <input
+            type="text"
+            name="task"
+            className="form-control"
+            placeholder="What needs doing?"
+            required
+          />
+        </div>
+        <div className="col-12 col-md-auto">
+          <input className="form-control" type="date" name="date" />
+        </div>
+        <div className="col-12 col-md-auto">
+          <button
+            className="btn btn-primary add-task-button w-100"
+            type="submit"
+          >
+            Add task
+          </button>
+        </div>
       </form>
     </>
   );
