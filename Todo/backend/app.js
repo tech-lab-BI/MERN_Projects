@@ -5,8 +5,9 @@ const mongoose = require("mongoose");
 //local module
 const todoRouter = require("./router/todoRouter");
 
-const dbPath =
-  "mongodb://root:newpass@ac-hb1tzqd-shard-00-00.fhpqazo.mongodb.net:27017,ac-hb1tzqd-shard-00-01.fhpqazo.mongodb.net:27017,ac-hb1tzqd-shard-00-02.fhpqazo.mongodb.net:27017/?ssl=true&replicaSet=atlas-km16gb-shard-0&authSource=admin&appName=test";
+require("dotenv").config();
+
+const dbPath = process.env.DB_PATH;
 const PORT = 3001;
 
 const app = express();
