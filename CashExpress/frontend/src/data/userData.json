@@ -1,0 +1,74 @@
+[
+  {
+    "_id": "101",
+    "name": "Bikram Das",
+    "password": "bikram123",
+    "email": "bikram.das@example.com",
+    "dob": "15-08-2002",
+    "profession": "student",
+    "income": 12000
+  },
+  {
+    "_id": "102",
+    "name": "Ananya Sharma",
+    "password": "ananya456",
+    "email": "ananya.sharma@example.com",
+    "dob": "22-11-2001",
+    "profession": "software developer",
+    "income": 45000
+  },
+  {
+    "_id": "103",
+    "name": "Rahul Sen",
+    "password": "rahul789",
+    "email": "rahul.sen@example.com",
+    "dob": "08-03-1999",
+    "profession": "graphic designer",
+    "income": 32000
+  },
+  {
+    "_id": "104",
+    "name": "Priya Roy",
+    "password": "priya321",
+    "email": "priya.roy@example.com",
+    "dob": "17-06-2003",
+    "profession": "student",
+    "income": 10000
+  },
+  {
+    "_id": "105",
+    "name": "Arjun Mukherjee",
+    "password": "arjun654",
+    "email": "arjun.mukherjee@example.com",
+    "dob": "29-01-1998",
+    "profession": "accountant",
+    "income": 38000
+  },
+  {
+    "_id": "106",
+    "name": "Sneha Ghosh",
+    "password": "sneha987",
+    "email": "sneha.ghosh@example.com",
+    "dob": "12-09-2000",
+    "profession": "teacher",
+    "income": 28000
+  },
+  {
+    "_id": "107",
+    "name": "Rohan Paul",
+    "password": "rohan246",
+    "email": "rohan.paul@example.com",
+    "dob": "04-12-1997",
+    "profession": "business owner",
+    "income": 55000
+  },
+  {
+    "_id": "108",
+    "name": "Moumita Sen",
+    "password": "moumita135",
+    "email": "moumita.sen@example.com",
+    "dob": "25-04-2002",
+    "profession": "content writer",
+    "income": 25000
+  }
+]

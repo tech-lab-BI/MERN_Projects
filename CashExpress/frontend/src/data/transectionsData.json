@@ -1,0 +1,146 @@
+[
+  {
+    "_id": "101",
+    "userId": "user001",
+    "type": "expense",
+    "category": "food",
+    "description": "Lunch at restaurant",
+    "amount": 450,
+    "date": "05-jul-2026"
+  },
+  {
+    "_id": "102",
+    "userId": "user001",
+    "type": "expense",
+    "category": "grocery",
+    "description": "Weekly groceries",
+    "amount": 1850,
+    "date": "06-jul-2026"
+  },
+  {
+    "_id": "1020",
+    "userId": "user031",
+    "type": "expense",
+    "category": "grocery",
+    "description": "Weekly groceries",
+    "amount": 1850,
+    "date": "06-jul-2026"
+  },
+  {
+    "_id": "103",
+    "userId": "user002",
+    "type": "expense",
+    "category": "transport",
+    "description": "Bus and metro",
+    "amount": 300,
+    "date": "07-jul-2026"
+  },
+  {
+    "_id": "104",
+    "userId": "user001",
+    "type": "income",
+    "category": "salary",
+    "description": "July salary",
+    "amount": 30000,
+    "date": "01-jul-2026"
+  },
+  {
+    "_id": "105",
+    "userId": "user002",
+    "type": "expense",
+    "category": "shopping",
+    "description": "New clothes",
+    "amount": 2200,
+    "date": "09-jul-2026"
+  },
+  {
+    "_id": "106",
+    "userId": "user001",
+    "type": "expense",
+    "category": "bills",
+    "description": "Electricity bill",
+    "amount": 1450,
+    "date": "10-jul-2026"
+  },
+  {
+    "_id": "107",
+    "userId": "user002",
+    "type": "expense",
+    "category": "entertainment",
+    "description": "Movie tickets",
+    "amount": 600,
+    "date": "12-jul-2026"
+  },
+  {
+    "_id": "108",
+    "userId": "user001",
+    "type": "expense",
+    "category": "food",
+    "description": "Dinner with friends",
+    "amount": 850,
+    "date": "14-jul-2026"
+  },
+  {
+    "_id": "109",
+    "userId": "user002",
+    "type": "expense",
+    "category": "health",
+    "description": "Medicine",
+    "amount": 750,
+    "date": "16-jul-2026"
+  },
+  {
+    "_id": "110",
+    "userId": "user001",
+    "type": "income",
+    "category": "freelance",
+    "description": "Freelance project payment",
+    "amount": 5000,
+    "date": "18-jul-2026"
+  },
+  {
+    "_id": "111",
+    "userId": "user002",
+    "type": "expense",
+    "category": "grocery",
+    "description": "Fruits and vegetables",
+    "amount": 700,
+    "date": "20-jul-2026"
+  },
+  {
+    "_id": "112",
+    "userId": "user001",
+    "type": "expense",
+    "category": "transport",
+    "description": "Taxi ride",
+    "amount": 420,
+    "date": "22-jul-2026"
+  },
+  {
+    "_id": "113",
+    "userId": "user002",
+    "type": "expense",
+    "category": "education",
+    "description": "Online course",
+    "amount": 1200,
+    "date": "24-jul-2026"
+  },
+  {
+    "_id": "114",
+    "userId": "user001",
+    "type": "expense",
+    "category": "shopping",
+    "description": "New shoes",
+    "amount": 1800,
+    "date": "26-jul-2026"
+  },
+  {
+    "_id": "115",
+    "userId": "user002",
+    "type": "expense",
+    "category": "food",
+    "description": "Coffee and snacks",
+    "amount": 280,
+    "date": "28-jul-2026"
+  }
+]

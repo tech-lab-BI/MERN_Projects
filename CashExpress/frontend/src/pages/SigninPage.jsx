@@ -1,4 +1,6 @@
+import { Link, useNavigate } from "react-router-dom";
 function Signin() {
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -8,12 +10,16 @@ function Signin() {
     const profession = formData.get("profession");
     const income = formData.get("income");
     const password = formData.get("password");
-    console.log("name : ", name);
-    console.log("Email : ", email);
-    console.log("dob : ", dob);
-    console.log("profession : ", profession);
-    console.log("income : ", income);
-    console.log("password : ", password);
+    const user = {
+      name,
+      email,
+      dob,
+      profession,
+      income,
+      password,
+    };
+    navigate("/login");
+    console.log(user);
   };
   return (
     <div className="min-h-screen w-full bg-slate-950 flex items-center justify-center p-4">
@@ -148,6 +154,10 @@ function Signin() {
             Sign-in
           </button>
         </form>
+        <div>
+          <p>Already have account ?</p>
+          <Link to="/login">Login</Link>
+        </div>
       </div>
     </div>
   );

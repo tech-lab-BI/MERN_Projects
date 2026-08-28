@@ -1,6 +1,7 @@
-import Comp from "./pages/Profile";
+import Comp from "./router/RouterComp";
 
 function App() {
+  
   return (
     <>
       <Comp />

@@ -1,10 +1,15 @@
+import { useNavigate } from "react-router-dom";
 function Login() {
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const email = formData.get("email");
     const password = formData.get("password");
-    console.log("LOG IN : ", email, " , ", password);
+    const loginDet = { email, password };
+    console.log(loginDet);
+
+    navigate("/home");
   };
 
   return (

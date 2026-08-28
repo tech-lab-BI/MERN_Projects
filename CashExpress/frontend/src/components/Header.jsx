@@ -1,7 +1,7 @@
 import { GiPlagueDoctorProfile } from "react-icons/gi";
 import { FcMoneyTransfer } from "react-icons/fc";
-function Header() {
-  const currentPage = "profile";
+import { Link } from "react-router-dom";
+function Header({ currentPage }) {
   return (
     <header className="w-full bg-slate-900/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -17,21 +17,13 @@ function Header() {
         </div>
 
         <nav className="flex items-center gap-6">
-          {currentPage !== "profile" ? (
-            <a
-              href="#"
-              className="text-slate-300 hover:text-white text-sm font-medium transition-colors duration-200"
-            >
-              Go to Profile
-            </a>
-          ) : (
-            <a
-              href="#"
-              className="text-slate-300 hover:text-white text-sm font-medium transition-colors duration-200"
-            >
-              Return Dashboard
-            </a>
-          )}
+          <div className="text-slate-300 hover:text-white text-sm font-medium transition-colors duration-200">
+            {currentPage === "profile" ? (
+              <Link to="/home">Return Dashboard</Link>
+            ) : (
+              <Link to="/profile">Go to Profile</Link>
+            )}
+          </div>
           <GiPlagueDoctorProfile size={30} />
         </nav>
       </div>

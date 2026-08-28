@@ -1,22 +1,24 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { GiPlagueDoctorProfile } from "react-icons/gi";
+import userData from "../data/userData.json" with { type: "json" };
 
 function Profile() {
+  const user = userData[0];
   return (
     <div className="min-h-screen bg-slate-950 flex flex-col text-white">
-      <Header />
+      <Header currentPage="profile"/>
       <main className="max-w-3xl w-full mx-auto p-6 space-y-8 grow flex flex-col justify-start">
         {/* Profile Card */}
         <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 sm:gap-8 shadow-xl">
           {/* Profile Photo */}
           <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-linear-to-tr from-blue-600 to-indigo-600 border-4 border-slate-800 shadow-xl flex items-center justify-center text-white font-bold text-4xl shadow-blue-500/10 shrink-0">
-            <GiPlagueDoctorProfile size={70}/>
+            <GiPlagueDoctorProfile size={70} />
           </div>
           {/* Profile Info */}
           <div className="grow text-center sm:text-left space-y-2">
             <h2 className="text-3xl font-extrabold tracking-tight text-white">
-              BIKRAM
+              {user.name}
             </h2>
             <p className="text-slate-400 text-sm font-medium">abc@gmail.com</p>
             <div className="pt-2">
@@ -37,9 +39,7 @@ function Profile() {
               <span className="text-xs font-semibold tracking-wider text-slate-500 uppercase">
                 Date of Birth
               </span>
-              <p className="text-base font-medium text-slate-200">
-                12-sep-2000
-              </p>
+              <p className="text-base font-medium text-slate-200">{user.dob}</p>
             </div>
             <div className="space-y-1 bg-slate-950/40 p-4 border border-slate-800/80 rounded-2xl">
               <span className="text-xs font-semibold tracking-wider text-slate-500 uppercase">
@@ -51,13 +51,17 @@ function Profile() {
               <span className="text-xs font-semibold tracking-wider text-slate-500 uppercase">
                 Profession
               </span>
-              <p className="text-base font-medium text-slate-200">Student</p>
+              <p className="text-base font-medium text-slate-200">
+                {user.profession}
+              </p>
             </div>
             <div className="space-y-1 bg-slate-950/40 p-4 border border-slate-800/80 rounded-2xl">
               <span className="text-xs font-semibold tracking-wider text-slate-500 uppercase">
                 Income
               </span>
-              <p className="text-base font-bold text-emerald-400">35000</p>
+              <p className="text-base font-bold text-emerald-400">
+                {user.income}
+              </p>
             </div>
           </div>
         </div>
