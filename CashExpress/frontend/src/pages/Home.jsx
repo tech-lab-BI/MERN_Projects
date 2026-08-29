@@ -1,23 +1,30 @@
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import transectionsData from "../data/transectionsData.json";
 import TransectionsList from "../components/TransectionsList";
-import { useMemo } from "react";
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { getAllData } from "../service/apiCall";
 
 function Home() {
-  const { totalInc, totalExp } = useMemo(() => {
-    let totalInc = 0;
-    let totalExp = 0;
-    transectionsData.forEach((item) => {
-      if (item.type === "income") {
-        totalInc += item.amount;
-      } else {
-        totalExp += item.amount;
-      }
+  const [transectionsData, setTransectionsData] = useState([]);
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  useEffect(() => {
+    getAllData(user._id).then((data) => {
+      setTransectionsData(data);
     });
-    return { totalInc, totalExp };
-  }, [transectionsData]);
+  }, []);
+
+  let totalInc = 0;
+  let totalExp = 0;
+
+  transectionsData.forEach((tran) => {
+    if (tran.type === "income") {
+      totalInc += tran.amount;
+    } else {
+      totalExp += tran.amount;
+    }
+  });
   return (
     <div className="min-h-screen bg-slate-950 flex flex-col text-white">
       <Header currentPage="Home" />
@@ -25,7 +32,7 @@ function Home() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
           <div>
             <h2 className="text-3xl font-bold tracking-tight text-white">
-              Welcome back Buddy 👋
+              Welcome back {user.name} 👋
             </h2>
             <p className="text-slate-400 mt-1 text-sm">
               Here is your Expense Dashboard overview
@@ -58,7 +65,7 @@ function Home() {
               TOTAL BALANCE
             </span>
             <span className="text-3xl font-bold text-blue-400 mt-2">
-              {totalInc-totalExp} 
+              {totalInc - totalExp}
             </span>
           </div>
         </div>

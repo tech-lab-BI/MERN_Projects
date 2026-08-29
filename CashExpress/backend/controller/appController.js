@@ -1,18 +1,26 @@
 const User = require("../model/userModel");
 const Transection = require("../model/transectionsModel");
 function fetchAllData(req, res) {
-    Transection.find().then((data) => {
-        res.json(data);
-    })
+  const userId = req.params.id;
+  Transection.find({userId}).then((data) => {
+    res.json(data);
+  });
 }
 function login(req, res) {
   const { email, password } = req.body;
   User.findOne({ email, password }).then((user) => {
-    let msg = false;
+    let msg = {};
     if (user) {
-      msg = true;
+      msg = {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        dob: user.dob,
+        profession: user.profession,
+        income: user.income,
+      };
     }
-    res.json({ message: msg });
+    res.json({ msg });
   });
 }
 function signin(req, res) {
@@ -54,14 +62,14 @@ function editData(req, res) {
 }
 function deleteData(req, res) {
   const transectionId = req.params.id;
-  Transection.deleteOne({_id : transectionId}).then((result) => {
+  Transection.deleteOne({ _id: transectionId }).then((result) => {
     console.log(result);
     let msg = "deleted successful";
     if (result.deletedCount === 0) {
       msg = "user not exists";
     }
     res.json({ message: msg });
-  })
+  });
 }
 
 module.exports = { fetchAllData, signin, login, addData, deleteData, editData };

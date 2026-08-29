@@ -1,25 +1,22 @@
 import { Link, useNavigate } from "react-router-dom";
+import { signin } from "../service/apiCall";
 function Signin() {
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-    const name = formData.get("name");
-    const email = formData.get("email");
-    const dob = formData.get("dob");
-    const profession = formData.get("profession");
-    const income = formData.get("income");
-    const password = formData.get("password");
     const user = {
-      name,
-      email,
-      dob,
-      profession,
-      income,
-      password,
+      name: formData.get("name"),
+      email: formData.get("email"),
+      dob: formData.get("dob"),
+      profession: formData.get("profession"),
+      income: formData.get("income"),
+      password: formData.get("password"),
     };
-    navigate("/login");
-    console.log(user);
+    signin(user).then(() => {
+      event.target.reset();
+      navigate("/login");
+    });
   };
   return (
     <div className="min-h-screen w-full bg-slate-950 flex items-center justify-center p-4">

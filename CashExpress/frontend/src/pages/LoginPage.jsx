@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { login } from "../service/apiCall";
 function Login() {
   const navigate = useNavigate();
   const handleSubmit = (event) => {
@@ -6,10 +7,15 @@ function Login() {
     const formData = new FormData(event.target);
     const email = formData.get("email");
     const password = formData.get("password");
-    const loginDet = { email, password };
-    console.log(loginDet);
-
-    navigate("/home");
+    login({ email, password }).then((result) => {
+      if (result.msg._id) {
+        localStorage.setItem("user",JSON.stringify(result.msg));
+        navigate("/home");
+      } else {
+        console.log("Wrong credential");
+        navigate("/");
+      }
+    });
   };
 
   return (
