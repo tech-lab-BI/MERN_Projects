@@ -1,7 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import { signin } from "../service/apiCall";
+import ErrorMsg from "../components/ErrorMsg.jsx";
+import { useState } from "react";
 function Signin() {
   const navigate = useNavigate();
+  const [err, setErr] = useState([]);
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -13,9 +16,13 @@ function Signin() {
       income: formData.get("income"),
       password: formData.get("password"),
     };
-    signin(user).then(() => {
-      event.target.reset();
-      navigate("/login");
+    signin(user).then((res) => {
+      if (!res.errors) {
+        event.target.reset();
+        navigate("/login");
+      } else {
+        setErr(res.errors);
+      }
     });
   };
   return (
@@ -29,6 +36,7 @@ function Signin() {
             Please enter your details to sign up
           </p>
         </div>
+        <div>{err && <ErrorMsg msg={err} />}</div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>

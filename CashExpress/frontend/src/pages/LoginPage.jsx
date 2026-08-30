@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { login } from "../service/apiCall";
+import { useState } from "react";
+import ErrorMsg from "../components/ErrorMsg";
 function Login() {
+  const [err, setErr] = useState([]);
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -8,12 +11,11 @@ function Login() {
     const email = formData.get("email");
     const password = formData.get("password");
     login({ email, password }).then((result) => {
-      if (result.msg._id) {
+      if (result.msg) {
         localStorage.setItem("user",JSON.stringify(result.msg));
         navigate("/home");
       } else {
-        console.log("Wrong credential");
-        navigate("/");
+        setErr(result.errors);
       }
     });
   };
@@ -29,6 +31,9 @@ function Login() {
         </p>
       </div>
 
+      <div>
+        {err.length > 0 && <ErrorMsg msg={err}/>}
+      </div>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label

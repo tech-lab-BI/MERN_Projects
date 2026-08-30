@@ -69,11 +69,31 @@ function Home() {
             </span>
           </div>
         </div>
-        <div>
-          <button>
-            <Link to="/transectionform">+ Add transection</Link>
-          </button>
-        </div>
+        <Link
+          to="/transectionform"
+          className="group block rounded-xl border border-gray-200 p-6 hover:bg-sky-500 min-w-40"
+        >
+          <div>
+            <svg
+              className="h-6 w-6 stroke-sky-500 group-hover:stroke-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 4.5v15m7.5-7.5h-15"
+              />
+            </svg>
+            <h3 className="mt-3 text-gray-900 group-hover:text-white">
+              New Transection
+            </h3>
+          </div>
+          <p className="mt-2 text-gray-500 group-hover:text-white">
+            Create a transection and add to list.
+          </p>
+        </Link>
 
         <div className="bg-slate-900 border border-slate-800 rounded-2xl shadow-lg overflow-hidden">
           <div className="px-6 py-5 border-b border-slate-800 flex justify-between items-center bg-slate-900/50">
