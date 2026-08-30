@@ -30,7 +30,14 @@ function RouterComp() {
               </ProtectedRouter>
             }
           />
-          <Route path="/transectionform" element={<TransectionForm />} />
+          <Route
+            path="/transectionform"
+            element={
+              <ProtectedRouter>
+                <TransectionForm />
+              </ProtectedRouter>
+            }
+          />
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>
