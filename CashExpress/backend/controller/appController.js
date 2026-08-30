@@ -80,7 +80,6 @@ const signin = [
     let errMsg = [];
     if (!err.isEmpty()) {
       errMsg = err.array().map((e) => e.msg);
-      console.log("error present : ", err);
       return res.json({
         errors: errMsg,
       });
@@ -142,7 +141,6 @@ function editData(req, res) {
 function deleteData(req, res) {
   const transectionId = req.params.id;
   Transection.deleteOne({ _id: transectionId }).then((result) => {
-    console.log(result);
     let msg = "deleted successful";
     if (result.deletedCount === 0) {
       msg = "user not exists";
