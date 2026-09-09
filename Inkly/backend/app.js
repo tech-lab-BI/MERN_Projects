@@ -1,10 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
+require('dotenv').config();
 const cors = require('cors')
 const appRouter = require("./router/appRouter");
 
-const PORT = 3001;
-const DB_PATH = "mongodb://root:abc@ac-hb1tzqd-shard-00-00.fhpqazo.mongodb.net:27017,ac-hb1tzqd-shard-00-01.fhpqazo.mongodb.net:27017,ac-hb1tzqd-shard-00-02.fhpqazo.mongodb.net:27017/Inkly?ssl=true&replicaSet=atlas-km16gb-shard-0&authSource=admin&appName=test"
+const PORT = process.env.PORT;
+const DB_PATH = process.env.DB_PATH;
 
 const app = express();
 app.use(cors());

@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3001";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const login = (user) => {
   return fetch(`${API_URL}/`, {
@@ -25,7 +25,7 @@ export const logout = () => {
 };
 
 export const fetchNotes = () => {
-  return fetch(`${API_URL}/notes`)
+  return fetch(`${API_URL}/getallnotes`)
     .then((response) => response.json());
 };
 

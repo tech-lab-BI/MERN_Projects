@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { login } from "../service/apiCall";
 
 function Login() {
@@ -44,7 +44,10 @@ function Login() {
           />
         </div>
         <button type="submit" className="btn btn-primary">
-          Submit
+          Login
+        </button>
+        <button className="btn btn-primary">
+          <Link to="/signup" className="btn">Sign Up</Link>
         </button>
       </form>
     </>
