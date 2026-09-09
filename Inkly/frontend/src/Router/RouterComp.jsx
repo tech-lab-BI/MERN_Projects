@@ -1,14 +1,20 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "../Pages/Login";
+import Signup from "../Pages/Signup";
+import Dasboard from "../Pages/Dashboard";
+import PageNotFound from "../Pages/404PageNotFound"
+
 function RouterComp() {
   return (
     <>
-      <BrowerRouter>
+      <BrowserRouter>
         <Routes>
-          <Route path="/" element="Login" />
-          <Route path="/signup" element="Signup" />
-          <Route path="/dashboard" element="Dashboard" />
-          <Route path="*" element="404PageNotFound" />
+          <Route path="/" element={<Login/>} />
+          <Route path="/signup" element={<Signup/>} />
+          <Route path="/dashboard" element={<Dasboard/>} />
+          <Route path="*" element={<PageNotFound/>} />
         </Routes>
-      </BrowerRouter>
+      </BrowserRouter>
     </>
   );
 }

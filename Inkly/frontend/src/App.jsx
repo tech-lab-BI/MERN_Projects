@@ -1,4 +1,4 @@
-import Comp from "./Pages/Signup";
+import Comp from "./Router/RouterComp";
 function App() {
   return (
     <>

@@ -1,9 +1,21 @@
+import { useNavigate } from "react-router-dom";
+import { login } from "../service/apiCall";
+
 function Login() {
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
-    console.log("Email : ", email, " Pass : ", password);
+    login({ email, password })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.msg);
+        if (data.msg === "Login successful") {
+          localStorage.setItem("login", {status : true});
+          navigate("/dashboard");
+        }
+      });
   };
   return (
     <>

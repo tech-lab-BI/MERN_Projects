@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+import { signup } from "../service/apiCall";
+
 function Signup() {
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const fname = event.target.fname.value;
@@ -7,11 +11,21 @@ function Signup() {
     const password = event.target.password.value;
     const profession = event.target.profession.value;
 
-    console.log("First Name:", fname);
-    console.log("Last Name:", lname);
-    console.log("Email:", email);
-    console.log("Password:", password);
-    console.log("Profession:", profession);
+    signup({
+      fname,
+      lname,
+      email,
+      password,
+      profession,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.msg === "Signup successful") {
+          navigate("/");
+        }
+      })
+      .catch((e) => console.log(e));
   };
   return (
     <>
