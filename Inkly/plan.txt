@@ -3,7 +3,7 @@ pages - login, signup, dashboard, 404
 -------backend--------
 cors
 mongoose
-+jwt
+jwt
 +auth
 ---------fronted----------
 bootstrap

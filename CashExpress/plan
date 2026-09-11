@@ -1,0 +1,10 @@
+pages - login, signup, home, profile
+
+------frontend------------
+tailwind
+--------backend----------
+cors
+bcrypt
+jwt
+----------both-------------
+env

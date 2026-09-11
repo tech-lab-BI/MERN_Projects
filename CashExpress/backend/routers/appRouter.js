@@ -1,12 +1,13 @@
-const express = require('express');
+const express = require("express");
 const appRouter = express.Router();
-const appController = require('../controller/appController');
+const appController = require("../controller/appController");
+const authMiddleware = require("../middleware/authMiddleware");
 
-appRouter.get("/home/:id", appController.fetchAllData);
+appRouter.get("/home/:id", authMiddleware, appController.fetchAllData);
 appRouter.post("/signin", appController.signin);
 appRouter.post("/login", appController.login);
-appRouter.post("/add-data", appController.addData);
-appRouter.post("/edit-data/:id", appController.editData);
-appRouter.post("/delete-data/:id", appController.deleteData);
+appRouter.post("/add-data", authMiddleware, appController.addData);
+appRouter.post("/edit-data/:id", authMiddleware, appController.editData);
+appRouter.post("/delete-data/:id", authMiddleware, appController.deleteData);
 
 module.exports = appRouter;

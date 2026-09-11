@@ -8,6 +8,7 @@ function Profile() {
   const user = JSON.parse(localStorage.getItem("user"));
   function handleSignout() {
     localStorage.removeItem("user");
+    localStorage.removeItem("token");
     navigate("/login");
   }
   return (

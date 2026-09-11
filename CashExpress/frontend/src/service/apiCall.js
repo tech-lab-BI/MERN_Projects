@@ -1,7 +1,12 @@
 const API_URL = import.meta.env.VITE_API_URL;
+const token = localStorage.getItem("token");
 
 export function getAllData(userId) {
-  return fetch(`${API_URL}/home/${userId}`).then((res) => {
+  return fetch(`${API_URL}/home/${userId}`, {
+    headers: {
+      Authorization: token,
+    },
+  }).then((res) => {
     return res.json();
   });
 }
@@ -26,7 +31,9 @@ export function signin(newUser) {
 export function addData(transection) {
   return fetch(`${API_URL}/add-data`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      Authorization: token,
+    },
     body: JSON.stringify(transection),
   }).then((res) => {
     return res.json();
@@ -35,7 +42,9 @@ export function addData(transection) {
 export function editData(transection, transectionId) {
   return fetch(`${API_URL}/edit-data/${transectionId}`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      Authorization: token,
+    },
     body: JSON.stringify(transection),
   }).then((res) => {
     res.json();
@@ -44,7 +53,9 @@ export function editData(transection, transectionId) {
 export function deleteData(transectionId) {
   return fetch(`${API_URL}/delete-data/${transectionId}`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      Authorization: token,
+    },
   }).then((res) => {
     res.json();
   });

@@ -2,6 +2,7 @@ const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
 const User = require("../model/userModel");
 const Transection = require("../model/transectionsModel");
+const jwt = require("jsonwebtoken");
 function fetchAllData(req, res) {
   const userId = req.params.id;
   Transection.find({ userId }).then((data) => {
@@ -55,8 +56,9 @@ const login = [
           profession: user.profession,
           income: user.income,
         };
+        const token = jwt.sign(msg, process.env.JWT_TOKEN, { expiresIn: "1d" });
 
-        return res.json({ msg });
+        return res.json({ msg, token });
       });
     });
   },

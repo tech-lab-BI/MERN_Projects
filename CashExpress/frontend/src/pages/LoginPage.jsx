@@ -13,6 +13,7 @@ function Login() {
     login({ email, password }).then((result) => {
       if (result.msg) {
         localStorage.setItem("user", JSON.stringify(result.msg));
+        localStorage.setItem("token", result.token);
         navigate("/home");
       } else {
         setErr(result.errors);
