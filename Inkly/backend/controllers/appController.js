@@ -9,7 +9,7 @@ const login = (req, res) => {
         return res.json({ msg: "User not found" });
       }
       if (user.password === password) {
-        return res.json({ msg: "Login successful" });
+        return res.json({ msg: "Login successful" , user });
       }
       return res.json({ msg: "Wrong password" });
     })
@@ -50,15 +50,25 @@ const fetchNotes = (req, res) => {
 };
 
 const addNote = (req, res) => {
-  const { title, date, description } = req.body;
+  const { id, title, date, description } = req.body;
 
-  Note.create({ title, date, description })
-    .then((data) => {
-      res.json({ msg: "Note added", data });
-    })
-    .catch((err) => {
-      res.status(500).json({ msg: err.message });
-    });
+  if (id) {
+    Note.findByIdAndUpdate(id, { title, date, description })
+      .then((data) => {
+        res.json({ msg: "Note updated", data });
+      })
+      .catch((err) => {
+        res.status(500).json({ msg: err.message });
+      });
+  } else {
+    Note.create({ title, date, description })
+      .then((data) => {
+        res.json({ msg: "Note added", data });
+      })
+      .catch((err) => {
+        res.status(500).json({ msg: err.message });
+      });
+  }
 };
 
 const deleteNote = (req, res) => {

@@ -3,101 +3,121 @@ import { signup } from "../service/apiCall";
 
 function Signup() {
   const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const fname = event.target.fname.value;
-    const lname = event.target.lname.value;
-    const email = event.target.email.value;
-    const password = event.target.password.value;
-    const profession = event.target.profession.value;
+
+    const { fname, lname, email, password, profession } = event.target;
 
     signup({
-      fname,
-      lname,
-      email,
-      password,
-      profession,
+      fname: fname.value,
+      lname: lname.value,
+      email: email.value,
+      password: password.value,
+      profession: profession.value,
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.msg === "Signup successful") {
           navigate("/");
         }
       })
-      .catch((e) => console.log(e));
+      .catch((error) => console.log(error));
   };
+
   return (
-    <>
-      <h1>Sign up</h1>
-      <form className="row g-3" onSubmit={handleSubmit}>
-        <div className="row g-3">
-          <div className="col">
+    <div className="container min-vh-100 d-flex justify-content-center align-items-center py-4">
+      <div
+        className="card shadow-sm p-4"
+        style={{ maxWidth: "600px", width: "100%" }}
+      >
+        <h1 className="text-center mb-4">Sign Up</h1>
+
+        <form className="row g-3" onSubmit={handleSubmit}>
+          <div className="col-md-6">
+            <label htmlFor="fname" className="form-label">
+              First Name
+            </label>
             <input
               name="fname"
               type="text"
               className="form-control"
-              placeholder="First name"
-              aria-label="First name"
+              id="fname"
+              placeholder="Enter first name"
+              required
             />
           </div>
-          <div className="col">
+
+          <div className="col-md-6">
+            <label htmlFor="lname" className="form-label">
+              Last Name
+            </label>
             <input
               name="lname"
               type="text"
               className="form-control"
-              placeholder="Last name"
-              aria-label="Last name"
+              id="lname"
+              placeholder="Enter last name"
+              required
             />
           </div>
-        </div>
 
-        <div className="col-md-6">
-          <label htmlFor="inputEmail4" className="form-label">
-            Email
-          </label>
-          <input
-            name="email"
-            type="email"
-            className="form-control"
-            id="inputEmail4"
-          />
-        </div>
-        <div className="col-md-6">
-          <label htmlFor="inputPassword4" className="form-label">
-            Password
-          </label>
-          <input
-            name="password"
-            type="password"
-            className="form-control"
-            id="inputPassword4"
-          />
-        </div>
-        <div className="col-md-4">
-          <label htmlFor="inputState" className="form-label">
-            Profession
-          </label>
-          <select
-            name="profession"
-            id="inputState"
-            className="form-select"
-            defaultValue="student"
-          >
-            <option value="student">Student</option>
-            <option value="employee">Employee</option>
-          </select>
-        </div>
-        <div className="col-12">
-          <button type="submit" className="btn btn-primary">
-            Register
-          </button>
-          <button className="btn btn-primary">
-            <Link to="/" className="btn">Back to Login</Link>
-          </button>
-        </div>
-      </form>
-    </>
+          <div className="col-12">
+            <label htmlFor="email" className="form-label">
+              Email
+            </label>
+            <input
+              name="email"
+              type="email"
+              className="form-control"
+              id="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+
+          <div className="col-12">
+            <label htmlFor="password" className="form-label">
+              Password
+            </label>
+            <input
+              name="password"
+              type="password"
+              className="form-control"
+              id="password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+
+          <div className="col-12">
+            <label htmlFor="profession" className="form-label">
+              Profession
+            </label>
+            <select
+              name="profession"
+              id="profession"
+              className="form-select"
+              defaultValue="student"
+            >
+              <option value="student">Student</option>
+              <option value="employee">Employee</option>
+            </select>
+          </div>
+
+          <div className="col-12 d-grid gap-2">
+            <button type="submit" className="btn btn-primary">
+              Register
+            </button>
+
+            <Link to="/" className="btn btn-outline-secondary">
+              Back to Login
+            </Link>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }
+
 export default Signup;
