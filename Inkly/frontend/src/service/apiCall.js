@@ -25,22 +25,31 @@ export const logout = () => {
 };
 
 export const fetchNotes = () => {
-  return fetch(`${API_URL}/getallnotes`)
-    .then((response) => response.json());
+  const token = localStorage.getItem("token");
+  return fetch(`${API_URL}/getallnotes`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((response) => response.json());
 };
 
 export const addNote = (note) => {
+  const token = localStorage.getItem("token");
   return fetch(`${API_URL}/addnote`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(note),
   });
 };
 
 export const deleteNote = (id) => {
+  const token = localStorage.getItem("token");
   return fetch(`${API_URL}/deletenote/${id}`, {
     method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   });
 };

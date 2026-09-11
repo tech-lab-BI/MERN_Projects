@@ -1,0 +1,15 @@
+pages - login, signup, dashboard, 404
+
+-------backend--------
+cors
+mongoose
++jwt
++auth
+---------fronted----------
+bootstrap
+props
+useState, useEffect
+localstorage
+--------common--------
+env
+api

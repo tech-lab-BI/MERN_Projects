@@ -21,6 +21,7 @@ function Dashboard() {
 
   function handleLogout() {
     localStorage.removeItem("user");
+    localStorage.removeItem("token");
     alert("Logout successful");
     navigate("/");
   }

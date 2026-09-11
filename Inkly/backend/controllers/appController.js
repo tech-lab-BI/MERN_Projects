@@ -1,5 +1,7 @@
 const User = require("../model/user_db");
 const Note = require("../model/notes_db");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 const login = (req, res) => {
   const { email, password } = req.body;
@@ -9,7 +11,10 @@ const login = (req, res) => {
         return res.json({ msg: "User not found" });
       }
       if (user.password === password) {
-        return res.json({ msg: "Login successful" , user });
+        const token = jwt.sign({ userId: user._id }, process.env.JWT_TOKEN, {
+          expiresIn: "1d",
+        });
+        return res.json({ msg: "Login successful", user, token });
       }
       return res.json({ msg: "Wrong password" });
     })

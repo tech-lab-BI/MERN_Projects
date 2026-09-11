@@ -15,6 +15,8 @@ function Login() {
       .then((data) => {
         if (data.msg === "Login successful") {
           localStorage.setItem("user", JSON.stringify(data.user));
+          // localStorage.setItem("token", JSON.stringify(data.token));
+          localStorage.setItem("token", data.token);
           navigate("/dashboard");
         }
       });
