@@ -1,7 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../service/apiCall";
+import { useState } from "react";
 
 function Login() {
+  const [errMsg, setErrMsg] = useState([]);
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -13,7 +15,9 @@ function Login() {
     login({ email, password })
       .then((res) => res.json())
       .then((data) => {
-        if (data.msg === "Login successful") {
+        if (data.errMsg) {
+          setErrMsg(data.errMsg);
+        } else if (data.msg === "Login successful") {
           localStorage.setItem("user", JSON.stringify(data.user));
           // localStorage.setItem("token", JSON.stringify(data.token));
           localStorage.setItem("token", data.token);
@@ -30,6 +34,15 @@ function Login() {
       >
         <h2 className="text-center mb-4">Login</h2>
 
+        <div>
+          {errMsg.length > 0 && (
+            <div>
+              {errMsg.map((e, index) => (
+                <li key={index}>{e.msg}</li>
+              ))}
+            </div>
+          )}
+        </div>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="email" className="form-label">

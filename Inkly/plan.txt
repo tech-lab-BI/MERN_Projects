@@ -4,7 +4,7 @@ pages - login, signup, dashboard, 404
 cors
 mongoose
 jwt
-+auth
+auth
 ---------fronted----------
 bootstrap
 props

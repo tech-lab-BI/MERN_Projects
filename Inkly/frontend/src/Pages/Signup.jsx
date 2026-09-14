@@ -1,7 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import { signup } from "../service/apiCall";
+import { useState } from "react";
 
 function Signup() {
+  const [errMsg, setErrMsg] = useState([]);
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -18,7 +20,10 @@ function Signup() {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.msg === "Signup successful") {
+        if (data.errMsg) {
+          setErrMsg(data.errMsg);
+        } else if (data.msg) {
+          alert(data.msg);
           navigate("/");
         }
       })
@@ -32,6 +37,16 @@ function Signup() {
         style={{ maxWidth: "600px", width: "100%" }}
       >
         <h1 className="text-center mb-4">Sign Up</h1>
+
+        <div>
+          {errMsg.length > 0 && (
+            <div>
+              {errMsg.map((e, index) => (
+                <li key={index}>{e.msg}</li>
+              ))}
+            </div>
+          )}
+        </div>
 
         <form className="row g-3" onSubmit={handleSubmit}>
           <div className="col-md-6">
