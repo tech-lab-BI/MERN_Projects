@@ -45,7 +45,7 @@ const logout = (req, res) => {
 };
 
 const fetchNotes = (req, res) => {
-  Note.find()
+  Note.find({ userId: req.userId })
     .then((data) => {
       res.json({ data });
     })
@@ -56,6 +56,7 @@ const fetchNotes = (req, res) => {
 
 const addNote = (req, res) => {
   const { id, title, date, description } = req.body;
+  const userId = req.userId;
 
   if (id) {
     Note.findByIdAndUpdate(id, { title, date, description })
@@ -66,7 +67,7 @@ const addNote = (req, res) => {
         res.status(500).json({ msg: err.message });
       });
   } else {
-    Note.create({ title, date, description })
+    Note.create({ userId, title, date, description })
       .then((data) => {
         res.json({ msg: "Note added", data });
       })

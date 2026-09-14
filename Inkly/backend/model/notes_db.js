@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const dbSchema = new mongoose.Schema({
+  userId: {
+    type: String,
+    required: true,
+  },
   title: {
     type: String,
     maxlength: 20,

@@ -12,7 +12,7 @@ function Display({ setShowDisplay, getNotes, editNote, setEditNote }) {
       date: formData.get("date"),
       description: formData.get("description"),
     };
-
+    
     addNote(noteData).then(() => {
       setShowDisplay(false);
       setEditNote(null);

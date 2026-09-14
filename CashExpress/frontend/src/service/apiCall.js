@@ -2,6 +2,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 const token = localStorage.getItem("token");
 
 export function getAllData(userId) {
+  console.log(token);
   return fetch(`${API_URL}/home/${userId}`, {
     headers: {
       Authorization: token,
