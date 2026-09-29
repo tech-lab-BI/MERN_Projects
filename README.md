@@ -1,1 +1,1 @@
-Here I'm going to challenge myself to 20+ MERN project without AI.
+Here I'm going to challenge myself to 20+ MERN project .
