@@ -2,7 +2,6 @@ const { check, validationResult } = require("express-validator");
 const User = require("../model/user_db");
 const Note = require("../model/notes_db");
 const jwt = require("jsonwebtoken");
-require("dotenv").config();
 
 const login = [
   check("email").isEmail().withMessage("Provide a valid email"),
@@ -19,9 +18,9 @@ const login = [
     .withMessage("Password should contain 1 special character"),
   (req, res) => {
     let err = validationResult(req);
-     // err.array() always returns an array. Even an empty array [] is truthy in JavaScript.
+    // err.array() always returns an array. Even an empty array [] is truthy in JavaScript.
     if (!err.isEmpty()) {
-      return res.json({ errMsg: err = err.array() });
+      return res.json({ errMsg: (err = err.array()) });
     }
     const { email, password } = req.body;
     User.findOne({ email })
@@ -60,12 +59,12 @@ const signup = [
   (req, res) => {
     let err = validationResult(req);
     if (!err.isEmpty()) {
-      return res.json({ errMsg: err = err.array() });
+      return res.json({ errMsg: (err = err.array()) });
     }
     const { fname, lname, email, password, profession } = req.body;
-    User.find({email}).then((user) => {
-      if (user) {
-        return res.status(401).json({ msg: "User already exist" });
+    User.find({ email }).then((user) => {
+      if (user.length !== 0) {
+        return res.status(401).json({ msg: "User Already exist." });
       }
       User.create({
         fname,
@@ -78,7 +77,9 @@ const signup = [
           return res.json({ msg: "Signup successful", user });
         })
         .catch((e) => {
-          return res.status(500).json({ msg: "Signup failed", error: e.message });
+          return res
+            .status(500)
+            .json({ msg: "Signup failed", error: e.message });
         });
     });
   },
