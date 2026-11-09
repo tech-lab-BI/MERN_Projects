@@ -1,0 +1,52 @@
+.error-page {
+  text-align: center;
+  margin-top: 50px;
+}
+.home-page {
+  text-align: center;
+  margin-top: 50px;
+}
+.budget-page {
+  text-align: center;
+  margin-top: 50px;
+}
+.profile-page {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+  background: linear-gradient(135deg, #0f172a, #312e81);
+  font-family: "Segoe UI", sans-serif;
+  color: white;
+}
+.sign-in {
+  width: 100%;
+  max-width: 400px;
+  padding: 35px;
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+.sign-up {
+  width: 100%;
+  max-width: 400px;
+  padding: 35px;
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
